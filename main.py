@@ -40,3 +40,10 @@ def get_usuario_cpf(CPF_usuario: str):
             return usuario
 
     return {"Status": 404, "Mensagem": "Não encontrou nenhum usuário com este CPF"}
+
+
+# Rota que insere um Usuário
+@app.post("/usuarios/inserir_usuario")
+def insere_usuario(usuario: Usuario):
+    base_de_dados.append(usuario) 
+    return usuario
