@@ -31,3 +31,12 @@ base_de_dados = [
 @app.get("/usuarios")
 def get_todos_os_usuarios():
     return base_de_dados
+
+# Rota que procura um usuário pelo CPF 
+@app.get("/usuarios/{CPF_usuario}")
+def get_usuario_cpf(CPF_usuario: str):
+    for usuario in base_de_dados:
+        if(usuario.CPF == CPF_usuario):
+            return usuario
+
+    return {"Status": 404, "Mensagem": "Não encontrou nenhum usuário com este CPF"}
